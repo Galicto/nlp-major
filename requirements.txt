@@ -1,0 +1,31 @@
+fastapi
+uvicorn[standard]
+pydantic
+motor
+redis
+websockets
+
+# Machine Learning & Data
+torch
+torch-geometric
+pytorch-forecasting
+ultralytics
+transformers
+stable-baselines3
+shap
+scikit-learn
+pandas
+numpy
+osmnx
+
+# Agent & NLP
+langchain
+langchain-anthropic
+SpeechRecognition
+indic-transliteration
+
+# Testing
+pytest
+pytest-cov
+pytest-asyncio
+faker

@@ -1,0 +1,292 @@
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+  --text-primary: #F5F5F7;
+  --text-secondary: #86868B;
+  --accent-color: #2997FF;
+  --accent-glow: rgba(41, 151, 255, 0.4);
+  --alert-critical: #FF3B30;
+  --alert-warning: #FF9500;
+  --glass-bg: rgba(28, 28, 30, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Panels (macOS / VisionOS style) */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  background: rgba(44, 44, 46, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Dashboard Grid Layout */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr 350px;
+  grid-template-rows: 80px 1fr;
+  height: 100vh;
+  gap: 24px;
+  padding: 24px;
+  background: radial-gradient(circle at top, #111 0%, #000 100%);
+}
+
+.top-nav {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  border-bottom: var(--glass-border);
+  border-radius: var(--radius-md);
+  z-index: 10;
+}
+
+.left-sidebar { grid-column: 1 / 2; display: flex; flex-direction: column; gap: 24px; }
+.main-content { grid-column: 2 / 3; display: flex; flex-direction: column; gap: 24px; }
+.right-sidebar { grid-column: 3 / 4; display: flex; flex-direction: column; gap: 24px; }
+
+/* Typography */
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.title-large {
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #FFFFFF 0%, #86868B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Components */
+.kpi-widget {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kpi-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 8px 0;
+}
+
+.kpi-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Apple-style Buttons */
+.apple-btn {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.apple-btn:hover {
+  transform: scale(1.02);
+  background: #E5E5EA;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.apple-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+}
+.apple-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Map Container */
+.map-wrapper {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: var(--glass-border);
+  position: relative;
+}
+
+/* iMessage style chat */
+.imessage-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.imessage-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.imessage-system {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.imessage-user {
+  background: var(--accent-color);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-input-wrapper {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: var(--glass-border);
+}
+
+.apple-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 24px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.apple-input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Classes */
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.feature-row-reverse {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  flex-direction: row-reverse;
+}
+.cta-box {
+  z-index: 10;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  padding: 60px 100px;
+  border-radius: 40px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.stats-row {
+  height: 140px;
+  display: flex;
+  gap: 24px;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+    min-height: 100vh;
+    padding: 12px;
+  }
+  
+  .left-sidebar { grid-column: 1; }
+  .main-content { grid-column: 1; }
+  .right-sidebar { grid-column: 1; height: 500px; }
+
+  .top-nav {
+    flex-direction: column;
+    padding: 16px;
+    height: auto;
+    gap: 16px;
+  }
+  .top-nav div {
+    flex-direction: column;
+    gap: 12px !important;
+    align-items: center;
+  }
+
+  .title-large {
+    font-size: 3rem !important;
+  }
+
+  .feature-row, .feature-row-reverse {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .cta-box {
+    padding: 30px 20px !important;
+    width: 90%;
+  }
+
+  .cta-box h2 {
+    font-size: 3rem !important;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .map-wrapper {
+    min-height: 400px;
+  }
+}
